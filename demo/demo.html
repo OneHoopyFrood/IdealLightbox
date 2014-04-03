@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <meta name="viewport" content="width=device-width" />
+    <title>IdealLightbox Demo</title>
+    
+    <!--Demo CSS-->
+    <link type="text/css" rel="stylesheet" href="css/skeleton.css">
+    <link type="text/css" rel="stylesheet" href="css/reset_and_base.css">
+    
+    <!--Include these to activate IdealLightbox-->
+    <link type="text/css" rel="stylesheet" href="../css/IdealLightbox.css">
+    <script type="text/javascript" src="../js/IdealLightbox.js"></script>
+    
+    <style>
+        /* #Thumbnails
+        ================================================== */
+        .lightbox-nav ul {
+            text-align: center;
+        }
+            .lightbox-nav ul li {
+                cursor: pointer;
+                display: inline-block;
+                float: none;
+                line-height: 1;
+                margin: 0 5px 10px;
+            }
+            .lightbox-nav ul li img {
+                max-width: 100%;
+            }
+    </style>
+</head>
+<body>
+    <div class="full">
+        <div class="body container">
+            <section class="row">
+                <div class="lightbox-nav sixteen columns">
+                    <h1>Demo:</h1>
+                    <ul class="lightbox-thumbnails">
+                        <li>
+                            <a href="img/kitten1.jpg" data-caption="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                               incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                               ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                               fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+                               anim id est laborum.">
+                                <img src="img/kitten1-tn.jpg" alt=""/>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="img/kitten2.jpg" data-caption="Cuteness numba 2" data-ad-dt="ads/test_dt_ad1.gif" data-ad-m="ads/test_moblie_ad1.jpg">
+                                <img src="img/kitten2-tn.jpg" alt=""/>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="img/kitten3.jpg">
+                                <img src="img/kitten3-tn.jpg" alt=""/>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="img/kid-hugs-kitten.jpg" data-caption="Cuteness numba 4">
+                                <img src="img/kid-hugs-kitten-tn.jpg" alt=""/>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+        <div id="IdealLightbox"></div>
+        <script>
+            // Activate the plugin:
+            $(function(){
+               $("#IdealLightbox").IdealLightbox({
+                   adBox: true
+               }); 
+            });
+        </script>
+    </div>
+</body>
+</html>
