@@ -14,7 +14,7 @@
             thumbnailSeletor: ".lightbox-thumbnails a",
             adBox: false,
             navigation: true,
-            playButton: true, /*Experimental, not fully functional*/
+            playButton: false, /*Experimental, not fully functional*/
             rotateInterval: 5000
         }, options);
 
