@@ -79,6 +79,7 @@
         $(settings.thumbnailSeletor).click(function(e) {
             // Stop the link click:
             e.preventDefault();
+            clearSelection();
 
             // Get the image from the href and the caption from the data-caption attribute
             changeImage($(this).attr('href'), $(this).attr('data-caption'), $(this).attr('data-ad-dt'))
@@ -92,12 +93,6 @@
             if($(window).width() > 900){
                 $imgContainer.height(($(window).height() - $caption.outerHeight()));
             }
-            else {
-                $imgContainer.height($img.height());
-            }
-//            var centerNav = (($imgContainer.height()/2) - ($rightNav.height()/2)) + "px";
-//            $rightNav.css("top", centerNav);
-//            $leftNav.css("top", centerNav);
 
         });
 
@@ -120,9 +115,11 @@
         if (settings.navigation) {
             $rightNav.click(function () {
                 rotateImage("right");
+                clearSelection();
             });
             $leftNav.click(function () {
                 rotateImage("left");
+                clearSelection();
             });
         }
 
@@ -137,6 +134,7 @@
                 }, settings.rotateInterval);
             }
             $playBtn.click(function () {
+                clearSelection();
                 // Switch stop and play
                 if (playState === 1) {
                     $playBtn.html("<span style='font-size: 60px !important; bottom: .8em; left: .8em'>&#9632;</span>");
@@ -155,6 +153,7 @@
         //Close options ( click/tap X or hit ESC key )
         this.find('.close').click(function() {
             clearTimeout(timeout);
+            clearSelection();
             toggleLightbox();
         });
         $(document).on('keydown', function(e) {
@@ -168,6 +167,16 @@
                 rotateImage("right");
             }
         });
+        
+        //Misc:
+        function clearSelection() {
+            if(document.selection && document.selection.empty) {
+                document.selection.empty();
+            } else if(window.getSelection) {
+                var sel = window.getSelection();
+                sel.removeAllRanges();
+            }
+        }
 
         return this;
     }

@@ -1,13 +1,16 @@
-/******************************************************
-******************* Ideal Lightbox ********************
-******************************************************/
+/* 
+    Ideal Lightbox
+    Created on : Apr 4, 2014
+    Author     : Cole Panike
+*/
+
 #IdealLightbox{
     position: fixed;
     left: 0;
     top: 0;
     right: 0;
     bottom: 0;
-    z-index: 9999999999999; /* that aughta' do it */
+    z-index: 999999; /* that aughta' do it */
     display: none; /* start hidden */
 }
 #IdealLightbox > .content {
@@ -21,8 +24,6 @@
     margin: 0;
     overflow: hidden;
 }
-/*.gallery-panel:after { content: "\0020"; display: block; height: 0; clear: both; visibility: hidden; }  Self Clearing */
-
     #IdealLightbox .col{
         float: left;
         position: relative;
@@ -73,9 +74,8 @@
                 opacity: .6;
                 position: absolute;
                 cursor: pointer;
-                vertical-align: middle;
             }
-            #IdealLightbox .chevron { top: 38%; font-size: 120px; }
+            #IdealLightbox .chevron { top: 45%; font-size: 120px; }
             #IdealLightbox .chevron:hover,
             #IdealLightbox .image .play span:hover{
                 color: #fff;
@@ -116,7 +116,7 @@
 /*Respond*/
 @media screen and (max-width: 900px){
     #IdealLightbox .content{
-        background: #000;
+        /*background: #000;*/
     }
     
     #IdealLightbox .col,
