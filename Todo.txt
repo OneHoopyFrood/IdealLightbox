@@ -1,1 +1,2 @@
-(A) Get the responsive working
+(A) Get the Ad's bar/sidebar content working
+(B) Minify code
