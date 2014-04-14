@@ -1,112 +1,118 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>IdealLightbox by colepanike</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <meta name="viewport" content="width=device-width" />
+    <title>IdealLightbox README</title>
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1>IdealLightbox</h1>
-        <p>Full screen lightweight lightbox jQuery plugin</p>
+    <!--Demo CSS-->
+    <link type="text/css" rel="stylesheet" href="demo/css/skeleton.css">
+    <link type="text/css" rel="stylesheet" href="demo/css/reset_and_base.css">
 
-        <p class="view"><a href="https://github.com/colepanike/IdealLightbox">View the Project on GitHub <small>colepanike/IdealLightbox</small></a></p>
+    <link href="http://alexgorbatchev.com/pub/sh/current/styles/shCore.css" rel="stylesheet" type="text/css" />
+    <link href="http://alexgorbatchev.com/pub/sh/current/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="full">
+        <div class="body container">
+            <section class="row">
+                <div class="sixteen columns">
+                    <h1>IdealLightbox.js</h1>
+                    <p>
+                        A very simple lightbox jQuery plugin. Designed to be compact,
+                        adaptive, and simple to implement.
+                    </p>
+                    <h2>Features</h2>
+                    <p>IdealLightbox includes several features which can be configured in the options parameter.</p>
+                    <ul class="disc">
+                        <li>Two transition options - fade or slide</li>
+                        <li>Ad inclusion - The ad displays to the right of the displayed image, and is indicated via the <em>data-ad-dt</em> attribute.</li>
+                        <li>
+                            Direct Linking - Put a value in the <em>data-directLink</em> attribute of the clickable element to include a hash url
+                            to that image, it will automatically pull up when the page is loaded with that tag.
+                        </li>
+                        <li>Infinite navigation - The Lightbox can be rotated from within the display, loops to the first image when the end is reached.</li>
+                    </ul>
 
+                    <h2>Basic setup</h2>
+                    <p>
+                        Include the following files
+                    </p>
+                    <pre class="brush: html">
+                        <link type="text/css" rel="stylesheet" href="css/IdealLightbox.css">
+                        <script type="text/javascript" src="js/IdealLightbox.js"></script>
+                    </pre>
+                    <p>
+                        Add a gallery of images. You have some freedom with structure
+                        if you make sure that you pass the proper jQuery selector to the
+                        <strong>thumbnailSeletor:</strong> option
+                    </p>
+                    <pre class="brush: html">
+                        &lt;ul class=&quot;lightbox-thumbnails&quot;&gt;
+                            &lt;li&gt;
+                                &lt;a href=&quot;img/image1.jpg&quot; data-caption=&quot;Image caption 1&quot; data-ad-dt=&quot;ads/ad1.gif&quot; data-directLink=&quot;Image1&quot;&gt;
+                                    &lt;img src=&quot;img/image1-tn.jpg&quot; alt=&quot;Caption 1&quot;/&gt;
+                                &lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;a href=&quot;img/image2.jpg&quot; data-caption=&quot;Image caption 2&quot; data-ad-dt=&quot;ads/ad2.gif&quot; data-directLink=&quot;Image2&quot;&gt
+                                    &lt;img src=&quot;img/image2-tn.jpg&quot; alt=&quot;Caption 2&quot;/&gt;
+                                &lt;/a&gt;
+                            &lt;/li&gt;
+                        &lt;/ul&gt;
+                    </pre>
+                    <p>
+                        Add this to the bottom of your &lt;body&gt;
+                    </p>
+                    <pre class="brush: html">
+                        &lt;div id="IdealLightbox"&gt;&lt;/div&gt;
+                    </pre>
+                    <p>
+                        And place this at the bottom of your page! Done!
+                    </p>
+                    <pre class="brush: js">
+                        $(function(){
+                            $("#IdealLightbox").IdealLightbox();
+                         });
+                    </pre>
+                    <h2>Additional Options</h2>
+                    <p>
+                        You can also use these options
+                    </p>
+                    <pre class="brush: js">
+                        $(function(){
+                            $("#IdealLightbox").IdealLightbox({
+                                animationSpeed: 330,
+                                animationStyle: "fade",
+                                thumbnailSeletor: ".lightbox-thumbnails a",
+                                adBox: false,
+                                navigation: true,
+                            });
+                         });
+                    </pre>
+                    <p>
+                        These are the defaults, they should be fairly self-explanatory.
+                        <br>
+                        Currently the options for animationStyle are "fade" and "slide"
+                    </p>
 
-        <ul>
-          <li><a href="https://github.com/colepanike/IdealLightbox/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/colepanike/IdealLightbox/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/colepanike/IdealLightbox">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <h1>
-<a name="ideallightbox" class="anchor" href="#ideallightbox"><span class="octicon octicon-link"></span></a>IdealLightbox</h1>
+                    <h2>Live Demo:</h2>
+                    <p>
+                        Click here to see a <a href="demo/demo.html">Live Demo</a>
+                    </p>
+                </div>
+            </section>
+        </div>
+        <div id="IdealLightbox"></div>
 
-<p>A very simple lightbox jQuery plugin. Designed to be compact, adaptive, and simple to implement.</p>
+        <script src="http://alexgorbatchev.com/pub/sh/current/scripts/shCore.js" type="text/javascript"></script>
+        <script src="http://alexgorbatchev.com/pub/sh/current/scripts/shAutoloader.js" type="text/javascript"></script>
+        <script src="http://alexgorbatchev.com/pub/sh/current/scripts/shBrushXml.js"></script>
+        <script src="http://alexgorbatchev.com/pub/sh/current/scripts/shBrushJScript.js"></script>
 
-<h2>
-<a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h2>
-
-<p>IdealLightbox includes several features which can be configured in the options parameter.</p>
-
-<ul>
-<li>Two transition options - fade or slide</li>
-<li>Ad inclusion - The ad displays to the right of the displayed image, and is indicated via the <em>data-ad-dt</em> attribute.</li>
-<li>Direct Linking - Put a value in the <em>data-directLink</em> attribute of the clickable element to include a hash url to that image, it will automatically pull up when the page is loaded with that tag.</li>
-<li>Infinite navigation - The Lightbox can be rotated from within the display, loops to the first image when the end is reached.</li>
-</ul><h2>
-<a name="basic-setup" class="anchor" href="#basic-setup"><span class="octicon octicon-link"></span></a>Basic setup</h2>
-
-<p>Include the following files</p>
-
-<div class="highlight highlight-html"><pre><span class="nt">&lt;link</span> <span class="na">type=</span><span class="s">"text/css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"css/IdealLightbox.css"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"js/IdealLightbox.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-</pre></div>
-
-<p>Add a gallery of images. You have some freedom with structure if you make sure that you pass the proper jQuery selector to the "thumbnailSeletor:" option (see options below)</p>
-
-<div class="highlight highlight-html"><pre><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"lightbox-thumbnails"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;li&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"img/image1.jpg"</span> <span class="na">data-caption=</span><span class="s">"Image caption 1"</span> <span class="na">data-ad-dt=</span><span class="s">"ads/ad1.gif"</span> <span class="na">data-directLink=</span><span class="s">"Image1"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"img/image1-tn.jpg"</span> <span class="na">alt=</span><span class="s">"Caption 1"</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    <span class="nt">&lt;li&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"img/image2.jpg"</span> <span class="na">data-caption=</span><span class="s">"Image caption 2"</span> <span class="na">data-ad-dt=</span><span class="s">"ads/ad2.gif"</span> <span class="na">data-directLink=</span><span class="s">"Image2"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"img/image2-tn.jpg"</span> <span class="na">alt=</span><span class="s">"Caption 2"</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-<span class="nt">&lt;/ul&gt;</span>
-</pre></div>
-
-<p>Add this to the bottom of your </p>
-
-<div class="highlight highlight-html"><pre><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"IdealLightbox"</span><span class="nt">&gt;&lt;/div&gt;</span>
-</pre></div>
-
-<p>And place this at the bottom of your page!</p>
-
-<div class="highlight highlight-js"><pre><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-    <span class="nx">$</span><span class="p">(</span><span class="s2">"#IdealLightbox"</span><span class="p">).</span><span class="nx">IdealLightbox</span><span class="p">();</span> 
-<span class="p">});</span>
-</pre></div>
-
-<p>Done!</p>
-
-<h2>
-<a name="additional-options" class="anchor" href="#additional-options"><span class="octicon octicon-link"></span></a>Additional Options</h2>
-
-<p>You can also use these options</p>
-
-<div class="highlight highlight-js"><pre><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-    <span class="nx">$</span><span class="p">(</span><span class="s2">"#IdealLightbox"</span><span class="p">).</span><span class="nx">IdealLightbox</span><span class="p">({</span>
-        <span class="nx">animationSpeed</span><span class="o">:</span> <span class="mi">330</span><span class="p">,</span>
-        <span class="nx">animationStyle</span><span class="o">:</span> <span class="s2">"fade"</span><span class="p">,</span>
-        <span class="nx">thumbnailSeletor</span><span class="o">:</span> <span class="s2">".lightbox-thumbnails a"</span><span class="p">,</span>
-        <span class="nx">adBox</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-        <span class="nx">navigation</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="p">});</span> 
- <span class="p">});</span>
-</pre></div>
-
-<p>These are the defaults, they should be fairly self-explanatory. 
-Currently the options for animationStyle are "fade" and "slide"</p>
-      </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/colepanike">colepanike</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
+        <script>
+            SyntaxHighlighter.all()
+        </script>
     </div>
-    <script src="javascripts/scale.fix.js"></script>
-    
-  </body>
+</body>
 </html>
