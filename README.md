@@ -1,6 +1,14 @@
 # IdealLightbox
 A very simple lightbox jQuery plugin. Designed to be compact, adaptive, and simple to implement.
 
+## Features
+IdealLightbox includes several features which can be configured in the options parameter.
+
+- Two transition options - fade or slide
+- Ad inclusion - The ad displays to the right of the displayed image, and is indicated via the *data-ad-dt* attribute.
+- Direct Linking - Put a value in the *data-directLink* attribute of the clickable element to include a hash url to that image, it will automatically pull up when the page is loaded with that tag.
+- Infinite navigation - The Lightbox can be rotated from within the display, loops to the first image when the end is reached.
+
 ## Basic setup
 Include the following files
 
@@ -9,14 +17,14 @@ Include the following files
 	
 Add a gallery of images. You have some freedom with structure if you make sure that you pass the proper jQuery selector to the "thumbnailSeletor:" option (see options below)
 
-	<ul class="lightbox-thumbnails" data-caption="Image caption 1">
+	<ul class="lightbox-thumbnails">
 		<li>
-			<a href="img/image1.jpg">
+			<a href="img/image1.jpg" data-caption="Image caption 1" data-ad-dt="ads/ad1.gif" data-directLink="Image1">
 				<img src="img/image1-tn.jpg" alt="Caption 1"/>
 			</a>
 		</li>
 		<li>
-			<a href="img/image2.jpg" data-caption="Image caption 2">
+			<a href="img/image2.jpg" data-caption="Image caption 2" data-ad-dt="ads/ad2.gif" data-directLink="Image2">
 				<img src="img/image2-tn.jpg" alt="Caption 2"/>
 			</a>
 		</li>
