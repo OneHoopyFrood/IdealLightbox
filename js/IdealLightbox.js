@@ -42,8 +42,8 @@
 
         // Add the navigation buttons
         if (settings.navigation) {
-            $lightbox.find(".col:first-child").append("<span class='chevron left'>&lsaquo;</span>");
-            $lightbox.find(".col:first-child").append("<span class='chevron right'>&rsaquo;</span>");
+            $lightbox.append("<span class='chevron left'>&lsaquo;</span>");
+            $lightbox.append("<span class='chevron right'>&rsaquo;</span>");
             $rightNav = $lightbox.find(".chevron.right");
             $leftNav = $lightbox.find(".chevron.left");
         }
