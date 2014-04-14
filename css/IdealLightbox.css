@@ -4,7 +4,7 @@
     Author     : Cole Panike & Toby Hayes
 */
 
-#IdealLightbox{
+#IdealLightbox {
     position: fixed;
     left: 0;
     top: 0;
@@ -12,41 +12,50 @@
     bottom: 0;
     z-index: 999999; /* that aughta' do it */
     display: none; /* start hidden */
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
-#IdealLightbox * {
-    box-sizing: border-box; /*This attribute is not inherited*/
-}
-#IdealLightbox > .content {
-    font: 16px 'Lato', "Century Link", arial, sans-serif;
-    width: 100%;
-    height: 100%;
-    color: #fff;
-    background: #000;
-    background: rgba(0,0,0,.7);
-    padding: 0;
-    margin: 0;
-    overflow: hidden;
-}
-    #IdealLightbox .col{
+
+    #IdealLightbox * {
+        -moz-box-sizing: border-box; /*This attribute is not inherited*/
+        -webkit-box-sizing: border-box; /*This attribute is not inherited*/
+        box-sizing: border-box; /*This attribute is not inherited*/
+    }
+
+    #IdealLightbox > .content {
+        font: 16px 'Lato', "Century Link", arial, sans-serif;
+        width: 100%;
+        height: 100%;
+        color: #fff;
+        background: #000;
+        background: rgba(0,0,0,.7);
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+    }
+
+    #IdealLightbox .col {
         float: left;
         position: relative;
         height: 100%;
     }
-    #IdealLightbox .col:first-child{
-        width: 80%;
-        background: #000;
-        background: rgba(0,0,0,.7);
-        color: #fff;
-        margin: 0;
-    }
-    #IdealLightbox .col:nth-child(2){
-        padding-left: 15px;
-        padding-right: 15px;
-        width: 20%;
-    }
+
+        #IdealLightbox .col:first-child {
+            width: 80%;
+            background: #000;
+            background: rgba(0,0,0,.7);
+            color: #fff;
+            margin: 0;
+        }
+
+        #IdealLightbox .col:nth-child(2) {
+            padding-left: 15px;
+            padding-right: 15px;
+            width: 20%;
+        }
     /*For when adBox is disabled:*/
-    #IdealLightbox .full{
+    #IdealLightbox .full {
         height: 100%;
         width: 100%;
         margin: 0;
@@ -55,60 +64,81 @@
         color: #fff;
         position: relative;
     }
-        #IdealLightbox .caption {
-            background-color:rgba(200,200,200,0.1);
-            padding: 10px;
-            padding-right: 50px;
-            text-align: center;
-        }
-        #IdealLightbox .image {
-            max-width: 100%;
-            height: 100%;
-            position: relative;
-        }
-            #IdealLightbox .image img {
-                display: block;
-                margin: auto;
-                max-width: 100%;
-                max-height: 100%;
-                position: absolute;
-                top: 0; left: 0; bottom: 0; right: 0;
-            }
-            /*Navigation*/
-            #IdealLightbox .chevron,
-            #IdealLightbox .play span{
-                font-weight: bold;
-                color: #ccc;
-                opacity: .6;
-                position: absolute;
-                cursor: pointer;
-            }
-            #IdealLightbox .chevron { top: 45%; font-size: 120px; }
-            #IdealLightbox .chevron:hover,
-            #IdealLightbox .image .play span:hover{
-                color: #fff;
-                opacity: 1;
-            }
-                #IdealLightbox .chevron.left{
-                    left: 5px;
-                }
-                #IdealLightbox .chevron.right{
-                    right: 5px;
-                }
-            #IdealLightbox .image .play span{
-                color: #fff;
-                font-size: 50px !important;
-                bottom: 1em;
-                left: 1em;
-            }
-            #IdealLightbox .image .play span.iPlay:before{ content: "\e613"; }
-            #IdealLightbox .image .play span.iPause:before{ content: "\e614"; display: none; }
 
-        #IdealLightbox .ad img{
-            margin: 0;
-            margin-top: 40px;
+    #IdealLightbox .caption {
+        background-color: rgba(200,200,200,0.1);
+        padding: 10px;
+        padding-right: 50px;
+        text-align: center;
+    }
+
+    #IdealLightbox .image {
+        max-width: 100%;
+        padding: 20px;
+        height: 100%;
+        position: relative;
+    }
+
+        #IdealLightbox .image img {
+            display: block;
+            margin: auto;
             max-width: 100%;
+            max-height: 100%;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
         }
+    /*Navigation*/
+    #IdealLightbox .chevron,
+    #IdealLightbox .play span {
+        font-weight: bold;
+        color: #ccc;
+        opacity: .6;
+        position: absolute;
+        cursor: pointer;
+    }
+
+    #IdealLightbox .chevron {
+        top: 45%;
+        font-size: 120px;
+    }
+
+        #IdealLightbox .chevron:hover,
+        #IdealLightbox .image .play span:hover {
+            color: #fff;
+            opacity: 1;
+        }
+
+        #IdealLightbox .chevron.left {
+            left: 5px;
+        }
+
+        #IdealLightbox .chevron.right {
+            right: 5px;
+        }
+
+    #IdealLightbox .image .play span {
+        color: #fff;
+        font-size: 50px !important;
+        bottom: 1em;
+        left: 1em;
+    }
+
+        #IdealLightbox .image .play span.iPlay:before {
+            content: "\e613";
+        }
+
+        #IdealLightbox .image .play span.iPause:before {
+            content: "\e614";
+            display: none;
+        }
+
+    #IdealLightbox .ad img {
+        margin: 0;
+        margin-top: 40px;
+        max-width: 100%;
+    }
 
     #IdealLightbox .close {
         font-size: 28px;
@@ -118,33 +148,43 @@
         top: .1em;
         right: .5em;
     }
-    #IdealLightbox .close:hover { color: #fff; }
-    
+
+        #IdealLightbox .close:hover {
+            color: #fff;
+        }
+
 /*Respond*/
-@media screen and (max-width: 900px){
-    #IdealLightbox .content{
+@media screen and (max-width: 900px) {
+    #IdealLightbox .content {
         /*background: #000;*/
     }
-    
+
     #IdealLightbox .col,
-    #IdealLightbox .full{
+    #IdealLightbox .full {
         float: none;
         margin: 0;
         width: 100% !important;
         height: auto;
     }
-    #IdealLightbox .image{
+
+    #IdealLightbox .image {
         margin: 0;
         height: auto;
     }
+
     #IdealLightbox .ad {
         display: none;
     }
-        #IdealLightbox .image img{
-            clear: both;
-            position: static;
-            margin: 0;
-            max-height: none;
-        }
-        #IdealLightbox .chevron { top: auto; bottom: 0; }
+
+    #IdealLightbox .image img {
+        clear: both;
+        position: static;
+        margin: 0;
+        max-height: none;
+    }
+
+    #IdealLightbox .chevron {
+        top: auto;
+        bottom: 0;
+    }
 }
