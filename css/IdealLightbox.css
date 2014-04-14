@@ -158,7 +158,7 @@
 /*Respond*/
 @media screen and (max-width: 900px) {
     #IdealLightbox .content {
-        /*background: #000;*/
+        position: absolute;
     }
 
     #IdealLightbox .col,
