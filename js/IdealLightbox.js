@@ -1,8 +1,10 @@
-/******************************************************
-******************* IdealLightbox.js *******************
-******************************************************/
+/*******************************************************************************
+ *   Ideal Lightbox
+ *  Created on : Apr 4, 2014
+ *  Author     : Cole Panike
+ ******************************************************************************/
 (function( $ ) {
-    $.fn.exists = function () {
+    $.fn.exists = function () { //Extra little plugin, helps with circular rotation
         return this.length !== 0;
     };
     $.fn.IdealLightbox = function( options ) {
@@ -31,6 +33,7 @@
         var $imgContainer = $lightbox.find(".image");
         var $img = $imgContainer.find("img");
         var $caption = $lightbox.find(".caption");
+        var $adImg = settings.adBox ? $lightbox.find(".ad img") : null;
         var $rightNav = null;
         var $leftNav = null;
         var $playBtn = null;
@@ -62,7 +65,7 @@
         }
 
         // Main function, changes the image and caption
-        function changeImage(imgHref, imgCaption) {
+        function changeImage(imgHref, imgCaption, directLink, adHref) {
             // Set the image source to the href value:
             $img.attr("src", imgHref);
             // Set the caption:
@@ -70,11 +73,37 @@
                 $caption.html(imgCaption);
             else
                 $caption.html("&nbsp;");
+            
+            if ( typeof directLink !== "undefined" )
+                location.hash = directLink;
+            else 
+                location.hash = "";
+            
+            if(settings.adBox){
+                if ( typeof adHref !== "undefined" && $adImg !== null) {
+                    $adImg.attr('src', adHref);
+                    $adImg.show();
+                }   
+                else
+                    $adImg.hide();
+            }
         }
 
-        // ------------------------------------------------------//
-        // Event handleing
-        // ------------------------------------------------------//
+        /* Event handleing
+        /------------------------------------------------------*/
+        //Load with a valid location.hash
+        $(function() {
+            if (location.hash){
+                var givenHash = location.hash.substr(1);
+                $(settings.thumbnailSeletor).each(function (i){
+                    if(givenHash === $(this).attr("data-directLink")){
+                        changeImage($(this).attr('href'), $(this).attr('data-caption'), $(this).attr('data-directLink'), $(this).attr('data-ad-dt'));
+                        toggleLightbox();
+                    }
+                });
+            }
+        });
+        
         // Thumnail click:
         $(settings.thumbnailSeletor).click(function(e) {
             // Stop the link click:
@@ -82,7 +111,7 @@
             clearSelection();
 
             // Get the image from the href and the caption from the data-caption attribute
-            changeImage($(this).attr('href'), $(this).attr('data-caption'), $(this).attr('data-ad-dt'))
+            changeImage($(this).attr('href'), $(this).attr('data-caption'), $(this).attr('data-directLink'), $(this).attr('data-ad-dt'));
 
             //Show the lightbox
             toggleLightbox();
@@ -110,7 +139,7 @@
                 if(!$showImg.exists())
                     $showImg = $(settings.thumbnailSeletor).last();
             }
-            changeImage($showImg.attr('href'), $showImg.attr('data-caption'));
+            changeImage($showImg.attr('href'), $showImg.attr('data-caption'), $showImg.attr('data-directLink'), $showImg.attr('data-ad-dt'));
         }
         if (settings.navigation) {
             $rightNav.click(function () {
@@ -124,6 +153,7 @@
         }
 
         // Play Button
+        // (not fully-functional yet)
         if(settings.playButton){
             var playState = 1;
             function autoRotate(){
@@ -155,10 +185,12 @@
             clearTimeout(timeout);
             clearSelection();
             toggleLightbox();
+            location.hash = "";
         });
         $(document).on('keydown', function(e) {
             if (e.keyCode === 27 && $lightbox.is(":visible")) { // ESC
                 toggleLightbox();
+                location.hash = "";
             }
             else if (e.keyCode === 37 && $lightbox.is(":visible")) { //LEFT ARROW
                 rotateImage("left");
@@ -169,6 +201,7 @@
         });
         
         //Misc:
+        //This clears the users select when they click to fast.
         function clearSelection() {
             if(document.selection && document.selection.empty) {
                 document.selection.empty();
