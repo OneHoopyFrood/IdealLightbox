@@ -1,4 +1,4 @@
-/* 
+/*
     Ideal Lightbox
     Created on : Apr 4, 2014
     Author     : Cole Panike & Toby Hayes
@@ -19,7 +19,7 @@
 
     #IdealLightbox * {
         -moz-box-sizing: border-box; /*This attribute is not inherited*/
-        -webkit-box-sizing: border-box; /*This attribute is not inherited*/
+        -webkit-box-sizing: border-box;  /*This attribute is not inherited*/
         box-sizing: border-box; /*This attribute is not inherited*/
     }
 
@@ -53,7 +53,7 @@
             padding-right: 15px;
             width: 20%;
         }
-        
+
     /*For when adBox is disabled:*/
     #IdealLightbox .full {
         height: 100%;
@@ -93,50 +93,44 @@
             bottom: 0;
             right: 0;
         }
-        
+
     /*Navigation*/
-    #IdealLightbox .chevron,
-    #IdealLightbox .play span {
-        font-weight: bold;
-        color: #ccc;
-        opacity: .6;
-        position: absolute;
+    #IdealLightbox .chevron-container {
         cursor: pointer;
+        position: absolute;
+        top: 0;
+        height: 100%;
+        text-align: center;
+        display: table;
     }
 
-    #IdealLightbox .chevron {
-        top: 50%;
-        font-size: 120px;
-    }
+        #IdealLightbox .chevron-container .chevron,
+        #IdealLightbox .play span {
+            font-weight: bold;
+            color: #ccc;
+            opacity: .6;
+            display: table-cell;
+            vertical-align: middle;
+        }
 
-        #IdealLightbox .chevron:hover,
+        #IdealLightbox .chevron-container .chevron:hover,
         #IdealLightbox .image .play span:hover {
             color: #fff;
             opacity: 1;
         }
 
-        #IdealLightbox .chevron.left {
-            left: .5%;
+        #IdealLightbox .chevron-container .chevron {
+            top: 50%;
+            font-size: 120px;
         }
+            #IdealLightbox .chevron-container.left { left: .5%; }
+            #IdealLightbox .chevron-container.right { right: 20.5%; }
 
-        #IdealLightbox .chevron.right {
-            right: 20.5%;
-        }
-
-    #IdealLightbox .image .play span {
-        color: #fff;
-        font-size: 50px !important;
-        bottom: 1em;
-        left: 1em;
-    }
-
-        #IdealLightbox .image .play span.iPlay:before {
-            content: "\e613";
-        }
-
-        #IdealLightbox .image .play span.iPause:before {
-            content: "\e614";
-            display: none;
+        #IdealLightbox .image .play span {
+            color: #fff;
+            font-size: 50px !important;
+            bottom: 1em;
+            left: 1em;
         }
 
     #IdealLightbox .ad img {
@@ -152,6 +146,7 @@
         position: absolute;
         top: .1em;
         right: .5em;
+        z-index: 888;
     }
 
         #IdealLightbox .close:hover {
@@ -160,9 +155,8 @@
 
 /*Respond*/
 @media screen and (max-width: 900px) {
-    body.scroll-off { overflow: hidden; }
     #IdealLightbox .content {
-        overflow: scroll;
+        background: rgba(0,0,0,.9);
     }
 
     #IdealLightbox .col,
@@ -170,26 +164,22 @@
         float: none;
         margin: 0;
         width: 100% !important;
-        height: auto;
     }
 
-    #IdealLightbox .image {
-        margin: 0;
-        height: auto;
-    }
+        #IdealLightbox .col:first-child {
+            background: none;
+        }
 
     #IdealLightbox .ad {
         display: none;
     }
 
-    #IdealLightbox .image img {
-        clear: both;
-        position: static;
-        margin: 0;
-        max-height: none;
+    #IdealLightbox .chevron-container.right{
+        right: .5%;
+        margin-right: 15px;
+    }
+    #IdealLightbox .chevron-container .chevron {
+        vertical-align: middle;
     }
 
-    #IdealLightbox .chevron {
-        display: none;
-    }
 }

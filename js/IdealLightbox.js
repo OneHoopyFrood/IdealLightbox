@@ -38,14 +38,14 @@
         var $leftNav = null;
         var $playBtn = null;
         var timeout;
-
+        var loadingImg = new Image().src = "../img/loading.gif";
 
         // Add the navigation buttons
         if (settings.navigation) {
-            $lightbox.append("<span class='chevron left'>&lsaquo;</span>");
-            $lightbox.append("<span class='chevron right'>&rsaquo;</span>");
-            $rightNav = $lightbox.find(".chevron.right");
-            $leftNav = $lightbox.find(".chevron.left");
+            $lightbox.append("<div class='chevron-container left'><span class='chevron'>&lsaquo;</span></div>");
+            $lightbox.append("<div class='chevron-container right'><span class='chevron'>&rsaquo;</span></div>");
+            $rightNav = $lightbox.find(".chevron-container.right");
+            $leftNav = $lightbox.find(".chevron-container.left");
         }
 
         // Add the Play Button
@@ -63,21 +63,14 @@
             else
                 throw settings.animationStyle + " is not a valid lightbox animation.";
         }
-        
+
         function adjustImageHeight(){
-            if($lightbox.is(":visible")) {
-                $("body").addClass('scroll-off');
-                if ($(window).width() > 900) {
-                    // Set the height of the image, must be done after lightbox is shown.
-                    $imgContainer.parent(".image").outerHeight(($(window).height() - $caption.outerHeight()));
-                }
-            }
-            else {
-                $("body").removeClass('scroll-off');
-            }
+            $imgContainer.parent(".image").outerHeight(($(window).height() - $caption.outerHeight()));
         }
+
         // Main function, changes the image and caption
         function changeImage(imgHref, imgCaption, directLink, adHref) {
+            $img.attr("src", loadingImg.src);
             // Set the image source to the href value:
             $img.attr("src", imgHref);
             // Set the caption:
