@@ -160,8 +160,9 @@
 
 /*Respond*/
 @media screen and (max-width: 900px) {
+    body.scroll-off { overflow: hidden; }
     #IdealLightbox .content {
-        position: absolute;
+        overflow: scroll;
     }
 
     #IdealLightbox .col,
@@ -189,10 +190,6 @@
     }
 
     #IdealLightbox .chevron {
-        top: 100px;
-        bottom: auto;
+        display: none;
     }
-        #IdealLightbox .chevron.right {
-            right: .5%;
-        }
 }

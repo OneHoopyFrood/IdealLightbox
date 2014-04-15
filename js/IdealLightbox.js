@@ -42,8 +42,8 @@
 
         // Add the navigation buttons
         if (settings.navigation) {
-            $lightbox.find(".col:first-child").append("<span class='chevron left'>&lsaquo;</span>");
-            $lightbox.find(".col:first-child").append("<span class='chevron right'>&rsaquo;</span>");
+            $lightbox.append("<span class='chevron left'>&lsaquo;</span>");
+            $lightbox.append("<span class='chevron right'>&rsaquo;</span>");
             $rightNav = $lightbox.find(".chevron.right");
             $leftNav = $lightbox.find(".chevron.left");
         }
@@ -57,13 +57,25 @@
         // Display the lightbox based on the animation options
         function toggleLightbox() {
             if (settings.animationStyle === "fade")
-                $lightbox.fadeToggle(settings.animationSpeed);
+                $lightbox.fadeToggle(settings.animationSpeed, function() { adjustImageHeight(); });
             else if (settings.animationStyle === "slide")
-                $lightbox.fadeToggle(settings.animationSpeed);
+                $lightbox.fadeToggle(settings.animationSpeed, function() { adjustImageHeight(); });
             else
                 throw settings.animationStyle + " is not a valid lightbox animation.";
         }
-
+        
+        function adjustImageHeight(){
+            if($lightbox.is(":visible")) {
+                $("body").addClass('scroll-off');
+                if ($(window).width() > 900) {
+                    // Set the height of the image, must be done after lightbox is shown.
+                    $imgContainer.parent(".image").outerHeight(($(window).height() - $caption.outerHeight()));
+                }
+            }
+            else {
+                $("body").removeClass('scroll-off');
+            }
+        }
         // Main function, changes the image and caption
         function changeImage(imgHref, imgCaption, directLink, adHref) {
             // Set the image source to the href value:
@@ -115,14 +127,6 @@
 
             //Show the lightbox
             toggleLightbox();
-
-            // Set the height of the image, must be done after lightbox is shown.
-            // Unfortuantely, this must be done each time, to adapt to the caption
-            // length
-            if ($(window).width() > 900) {
-                $imgContainer.height(($(window).height() - $caption.outerHeight()));
-            }
-
         });
 
         // Navigation click:
@@ -140,6 +144,7 @@
                     $showImg = $(settings.thumbnailSeletor).last();
             }
             changeImage($showImg.attr('href'), $showImg.attr('data-caption'), $showImg.attr('data-directLink'), $showImg.attr('data-ad-dt'));
+            adjustImageHeight();
         }
         if (settings.navigation) {
             $rightNav.click(function () {
