@@ -1,2 +1,0 @@
-- [ ] Minify code
-- [ ] Mobile Ad option
