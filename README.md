@@ -1,6 +1,8 @@
 # IdealLightbox
 A very simple lightbox jQuery plugin. Designed to be compact, adaptive, and simple to implement.
 
+[Live Demo](http://colepanike.github.io/IdealLightbox/demo/demo.html)
+
 ## Features
 IdealLightbox includes several features which can be configured in the options parameter.
 
